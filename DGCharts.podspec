@@ -12,7 +12,8 @@ Pod::Spec.new do |s|
   s.default_subspec = "Core"
   s.swift_version = '5.7'
   s.cocoapods_version = '>= 1.5.0'
-  
+  s.dependency 'Adjust', '~> 5.1.1'
+  s.dependency 'AppsFlyerFramework', '~> 6.16.0'
   s.resource_bundles = {"DGCharts" => ["Source/Charts/PrivacyInfo.xcprivacy"]}
   
   s.subspec "Core" do |ss|
